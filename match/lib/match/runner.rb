@@ -214,7 +214,7 @@ module Match
         names.push(params[:platform])
       end
 
-      profile_name = names.join("_").gsub("*", '\*') # this is important, as it shouldn't be a wildcard
+      profile_name = names.join("_").gsub("*", 'ASTERISK_SYMBOL') # this is important, as it shouldn't be a wildcard
       base_dir = File.join(prefixed_working_directory, "profiles", prov_type.to_s)
 
       extension = params[:platform].to_s == :macos.to_s ? ".provisionprofile" : ".mobileprovision"

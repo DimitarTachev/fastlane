@@ -82,7 +82,7 @@ module Match
       IO.copy_stream(p12_path, dest_p12_path)
       unless profile_path.nil?
         FileUtils.mkdir_p(output_dir_profiles)
-        bundle_id = FastlaneCore::ProvisioningProfile.bundle_id(profile_path)
+        bundle_id = FastlaneCore::ProvisioningProfile.bundle_id(profile_path).gsub("*", 'ASTERISK_SYMBOL')
         profile_extension = FastlaneCore::ProvisioningProfile.profile_extension(profile_path)
         dest_profile_path = File.join(output_dir_profiles, "#{cert_type.to_s.capitalize}_#{bundle_id}#{profile_extension}")
         files_to_commit.push(dest_profile_path)
